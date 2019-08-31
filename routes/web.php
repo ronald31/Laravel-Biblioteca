@@ -11,10 +11,25 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-Route::get('permiso/{nombre}/{slug?}','PermisoController@index');
 
-//Route::view('permiso', 'permiso');
+
+
+
+
+
+Route::get('/','InicioController@index');
+
+
+
+//rutas para Permiso
+
+//Route::get('admin/permiso','Admin/Permisocontroller@index')->name('permiso);
+//o
+Route::group(['prefix' => 'admin','namespace'=>'Admin'], function() {
+    Route::get('permiso', 'PermisoController@index')->name('permiso');
+    Route::get('permiso/crear','PermisoController@crear')->name('crear_permiso');
+});
+
+
+
